@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Company Information</h1>
+
+        <!-- Reliance Info -->
+        <div class="company-info">
+            <h2>Reliance</h2>
+            <p>Number of employees: 2370</p>
+            <p>Mean working hours: 200.36</p>
+            <p>Mean projects: 3.82</p>
+            <p>Promotions: 6</p>
+            <!-- Insight for Reliance -->
+            <p class="insight">Insight: Reliance has a moderate level of employee satisfaction with a relatively low number of promotions compared to other companies.</p>
+        </div>
+
+        <!-- Tata Info -->
+        <div class="company-info">
+            <h2>Tata</h2>
+            <p>Number of employees: 1586</p>
+            <p>Mean working hours: 201.17</p>
+            <p>Mean projects: 3.79</p>
+            <p>Promotions: 1</p>
+            <!-- Insight for Tata -->
+            <p class="insight">Insight: Tata has a lower employee count and fewer promotions, suggesting a more stable workforce but potentially lower employee satisfaction levels.</p>
+        </div>
+
+        <!-- Adani Info -->
+        <div class="company-info">
+            <h2>Adani</h2>
+            <p>Number of employees: 2954</p>
+            <p>Mean working hours: 201.44</p>
+            <p>Mean projects: 3.81</p>
+            <p>Promotions: 41</p>
+            <!-- Insight for Adani -->
+            <p class="insight">Insight: Adani shows a higher rate of promotions compared to other companies, indicating a focus on employee development and satisfaction.</p>
+        </div>
+
+        <!-- Infosys Info -->
+        <div class="company-info">
+            <h2>Infosys</h2>
+            <p>Number of employees: 4207</p>
+            <p>Mean working hours: 199.43</p>
+            <p>Mean projects: 3.79</p>
+            <p>Promotions: 130</p>
+            <!-- Insight for Infosys -->
+            <p class="insight">Insight: Infosys has a large workforce and a significant number of promotions, suggesting a focus on career advancement and employee satisfaction.</p>
+        </div>
+
+        <!-- Wipro Info -->
+        <div class="company-info">
+            <h2>Wipro</h2>
+            <p>Number of employees: 1665</p>
+            <p>Mean working hours: 203.68</p>
+            <p>Mean projects: 3.82</p>
+            <p>Promotions: 31</p>
+            <!-- Insight for Wipro -->
+            <p class="insight">Insight: Wipro has a moderate number of employees and promotions, indicating a balanced approach to workforce management and satisfaction.</p>
+        </div>
+
+        <!-- Toggle Menu for Graphs -->
+        <div class="toggle-menu">
+            <input type="checkbox" id="toggle-graphs">
+            <label for="toggle-graphs">Toggle Graphs</label>
+            <div class="menu-content">
+                <!-- Promotions Chart -->
+                <div class="chart-container">
+                   
+                    <canvas id="promotionsChart"></canvas>
+                </div>
+
+                <!-- Mean Working Hours Chart -->
+                <div class="chart-container">
+                    
+                    <canvas id="workingHoursChart"></canvas>
+                </div>
+
+                <!-- Mean Projects Chart -->
+                <div class="chart-container">
+                   
+                    <canvas id="projectsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Page Link -->
+        <left><a href="/" class="back-link">Back to Main Page</a></left>
+    </div>
+
+    <script>
+        const promotionsData = {
+            labels: ['Reliance', 'Tata', 'Adani', 'Infosys', 'Wipro'],
+            datasets: [{
+                label: 'Promotions',
+                data: [6, 1, 41, 130, 31],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const workingHoursData = {
+            labels: ['Reliance', 'Tata', 'Adani', 'Infosys', 'Wipro'],
+            datasets: [{
+                label: 'Mean Working Hours',
+                data: [200.36, 201.17, 201.44, 199.43, 203.68],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const projectsData = {
+            labels: ['Reliance', 'Tata', 'Adani', 'Infosys', 'Wipro'],
+            datasets: [{
+                label: 'Mean Projects',
+                data: [3.82, 3.79, 3.81, 3.79, 3.82],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const promotionsChart = new Chart(
+            document.getElementById('promotionsChart'),
+            {
+                type: 'bar',
+                data: promotionsData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            }
+        );
+
+        const workingHoursChart = new Chart(
+            document.getElementById('workingHoursChart'),
+            {
+                type: 'bar',
+                data: workingHoursData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            }
+        );
+
+        const projectsChart = new Chart(
+            document.getElementById('projectsChart'),
+            {
+                type: 'bar',
+                data: projectsData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            }
+        );
+    </script>
+</body>
+</html>
